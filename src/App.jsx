@@ -8,7 +8,9 @@ function App() {
     golesLocal: 0,
     golesVisitante: 0,
     tarjetaAmarillaLocal: 0,
-    tarjetaAmarillaVisitante: 0
+    tarjetaAmarillaVisitante: 0,
+    tarjetaRojaLocal:0,
+    tarjetaRojaVisitante:0
   })
 
   const onGol = (equipo) => {
@@ -27,11 +29,19 @@ function App() {
       setPartido({...partido, tarjetaAmarillaVisitante: partido.tarjetaAmarillaVisitante+1})
     }
   }
+  const onTarjetaRoja = (equipo) => {
+    if(equipo=='local'){
+      setPartido({...partido, tarjetaRojaLocal: partido.tarjetaRojaLocal+1})
+    }
+    else{
+      setPartido({...partido, tarjetaRojaVisitante: partido.tarjetaRojaVisitante+1})
+    }
+  }
 
   return (
     <div className='container'>
       <h1>Partido</h1>
-      <Controles onGol={onGol} onTarjetaAmarilla={onTarjetaAmarilla} />
+      <Controles onGol={onGol} onTarjetaAmarilla={onTarjetaAmarilla} onTarjetaRoja={onTarjetaRoja}/>
       <Display partido={partido} />
     </div>
   )
