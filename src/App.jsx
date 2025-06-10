@@ -38,10 +38,21 @@ function App() {
     }
   }
 
+  const onResetPartido = () => {
+    setPartido({
+      golesLocal: 0,
+      golesVisitante: 0,
+      tarjetaAmarillaLocal: 0,
+      tarjetaAmarillaVisitante: 0,
+      tarjetaRojaLocal:0,
+      tarjetaRojaVisitante:0
+    })
+    
+  }
   return (
     <div className='container'>
       <h1>Partido</h1>
-      <Controles onGol={onGol} onTarjetaAmarilla={onTarjetaAmarilla} onTarjetaRoja={onTarjetaRoja}/>
+      <Controles onGol={onGol} onTarjetaAmarilla={onTarjetaAmarilla} onTarjetaRoja={onTarjetaRoja} onreset={onResetPartido}/>
       <Display partido={partido} />
     </div>
   )
